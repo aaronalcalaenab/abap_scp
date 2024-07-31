@@ -1,0 +1,16 @@
+@Metadata.layer: #CORE
+annotate view z_b_det_customers_aag with
+{
+
+  @UI.lineItem: [{ position: 10, importance: #HIGH }]
+  Nombres;
+
+  @UI.lineItem: [{ position: 20, importance: #HIGH }]
+  Apellidos;
+
+  @UI.lineItem: [{ position: 30, importance: #HIGH, label: 'Correo Electronico' }]
+  Email;
+
+  @UI.lineItem: [{ position: 40, importance: #HIGH, label: 'Tipo Contraro' }]
+  CntrType;
+}

@@ -1,0 +1,64 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    typeImageUrl: '',
+    imageUrl: '',
+    title: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Titulo',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: 'Autor',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+annotate view z_i_libros with
+{
+  @UI.facet:  [{ id:'DetallesLibro', label: 'Detalles del Libro', type: #COLLECTION, position: 10 },
+                { id: 'Libro', parentId: 'DetallesLibro', label: 'Detalles', type: #FIELDGROUP_REFERENCE,
+                targetQualifier: 'DetallesLibro', position: 10 },
+               { id: 'Cliente', label: 'Clientes', type: #LINEITEM_REFERENCE, targetElement: '_DetCliente', position: 20}]
+
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibro', position: 10 }]
+  IdLibro;
+
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibro', position: 20 }]
+  Autor;
+
+  @UI: { lineItem: [{ position: 10, importance: #HIGH }],
+         selectionField: [{ position: 10 }] }
+         @Consumption.valueHelpDefinition: [{ entity: { name: 'z_b_brands_aag', element: 'Marca'} }]
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibro', position: 30 }]
+  Titulo;
+
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibro', position: 40 }]
+  Precio;
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibro', position: 50 }]
+  Idioma;
+
+  @UI.lineItem: [{ position: 20, importance: #HIGH }]
+  @Search: {
+      defaultSearchElement: true,
+      ranking: #MEDIUM,
+      fuzzinessThreshold: 0.8}
+  @UI.fieldGroup: [{ qualifier: 'DetallesLibro', position: 60 }]
+  Editorial;
+  
+  
+
+}
